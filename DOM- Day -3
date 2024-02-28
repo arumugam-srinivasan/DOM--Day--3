@@ -1,0 +1,228 @@
+CALCULATER:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="screen" readonly>
+        <div class="buttons">
+            <button onclick="clearScreen()">C</button>
+            <button onclick="backspace()">⌫</button>
+            <button onclick="calculate('/')">÷</button>
+            <button onclick="appendToScreen(7)">7</button>
+            <button onclick="appendToScreen(8)">8</button>
+            <button onclick="appendToScreen(9)">9</button>
+            <button onclick="calculate('*')">×</button>
+            <button onclick="appendToScreen(4)">4</button>
+            <button onclick="appendToScreen(5)">5</button>
+            <button onclick="appendToScreen(6)">6</button>
+            <button onclick="calculate('-')">-</button>
+            <button onclick="appendToScreen(1)">1</button>
+            <button onclick="appendToScreen(2)">2</button>
+            <button onclick="appendToScreen(3)">3</button>
+            <button onclick="calculate('+')">+</button>
+            <button onclick="appendToScreen(0)">0</button>
+            <button onclick="appendToScreen('.')">.</button>
+            <button onclick="calculate('=')" id="equals">=</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+css:
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.calculator {
+    width: 220px;
+    height: 320px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#screen {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    text-align: right;
+    font-size: 18px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px 5px 0 0;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+button {
+    cursor: pointer;
+    background-color: #f2f2f2;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 3px;
+    margin: 2px 0px;
+    position: relative;
+    left: 13px;
+    top: 20px;
+    height: 60px;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+button#equals {
+    grid-column: 3 / span 2;
+}
+
+js:
+
+const screen = document.getElementById('screen');
+let calculating = false;
+let firstValue = null;
+let operator = null;
+
+function appendToScreen(value) {
+    if (value === '.' && screen.value.includes('.')) return;
+    if (calculating) {
+        screen.value = '';
+        calculating = false;
+    }
+    screen.value += value;
+
+--------------------------------------------------------------------------------------------\
+HTML FORM:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form and Table Example</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="myForm">
+      <label for="fname">First Name:</label><br>
+      <input type="text" id="fname" name="fname"><br>
+      <label for="lname">Last Name:</label><br>
+      <input type="text" id="lname" name="lname"><br>
+      <input type="submit" value="Submit">
+    </form>
+    <br>
+    <table id="myTable">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+      </tr>
+      <!-- Rows will be added here dynamically -->
+    </table>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+css:
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+
+DOM:
+
+document.getElementById("myForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  var fname = document.getElementById("fname").value;
+  var lname = document.getElementById("lname").value;
+
+  var newRow = document.createElement("tr");
+
+  var fnameCell = document.createElement("td");
+  fnameCell.textContent = fname;
+  newRow.appendChild(fnameCell);
+
+  var lnameCell = document.createElement("td");
+  lnameCell.textContent = lname;
+  newRow.appendChild(lnameCell);
+
+  document.getElementById("myTable").appendChild(newRow);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
